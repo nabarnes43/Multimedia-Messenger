@@ -1,0 +1,100 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Kill Processes",
+      "type": "shell",
+      "command": "echo 'Killing server...' && pkill -f './server/server' || echo 'No server running' && echo 'Killing client...' && pkill -f './client/client' || echo 'No client running'",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "new",
+        "close": false
+      }
+    },
+    {
+      "label": "Build Project",
+      "type": "shell",
+      "command": "make clean && make -B",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared",
+        "close": true
+      }
+    },
+    {
+      "label": "Run Server",
+      "type": "shell",
+      "command": "./server/server",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "close": false
+      }
+    },    
+    {
+      "label": "Run Client 1",
+      "type": "shell",
+      "command": "sleep 2 && ./client/client",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "close": false
+      }
+    },
+    {
+      "label": "Run Client 2",
+      "type": "shell",
+      "command": "sleep 2 && ./client/client",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "close": false
+      }
+    },
+    {
+      "label": "Run All",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Kill Processes",
+        "Build Project",
+        "Run Some"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Run Some",
+      "dependsOrder": "parallel",
+      "dependsOn": [
+        "Run Server",
+        "Run Client 1",
+        "Run Client 2"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared",
+        "close": true
+      }
+    }
+  ]
+}

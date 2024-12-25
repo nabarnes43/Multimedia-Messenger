@@ -1,0 +1,149 @@
+
+# **Multimedia Communication System**
+
+### **Created by Menelik Haqq and Nasir Barnes**  
+**Roles**:  
+- Menelik Haqq: Programmer/ Writer 
+- Nasir Barnes: Programmer/ Writer
+
+---
+
+## **Project Overview**
+
+This project is a multimedia communication system that supports messaging, audio, and video functionality using C++ and FFmpeg. The system includes a server and client implementation with shared protocols to manage communication efficiently.
+
+- Video Demo: https://drive.google.com/file/d/1Ib8hUBNpa_y6p1uqONw58305FIkEGxW5/view?usp=drive_link
+
+---
+
+## **File Organization**
+
+Ensure the files are organized in the following structure:
+
+- **Project Folder**:
+  - `server/`: Contains `server.cpp` for server-side implementation.
+  - `client/`: Contains `client.cpp` for client-side implementation.
+  - `protocol/`: Contains `protocol.h`, the shared protocol for communication.
+  - `Makefile`: Used to build the project on Unix-based systems.
+  - `README.md`: This file with setup and usage instructions.
+
+---
+
+## **Prerequisites**
+
+### **Required Software**
+
+1. **C++ Compiler**:
+   - macOS: Install Xcode Command Line Tools (if not already installed).
+   - Windows: Install MinGW or Visual Studio.
+
+2. **FFmpeg**:
+   - macOS: Install via Homebrew.
+   - Windows: Download FFmpeg from the official website and add it to the system PATH.
+
+---
+
+## **Setup Instructions**
+
+### **For macOS**
+
+1. **Install Homebrew**:  
+   If not already installed, open Terminal and run:  
+   `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+
+2. **Install FFmpeg**:  
+   Use Homebrew to install FFmpeg:  
+   `brew install ffmpeg`
+
+3. **Navigate to the Project Folder**:  
+   Open a terminal and move to the directory containing the project files:  
+   `cd /path/to/Project`
+
+4. **Compile the Code**:  
+   Use the Makefile to compile the project:  
+   `make clean`  
+   `make -B`
+
+5. **Run the Server**:  
+   Open a terminal and start the server:  
+   `./server/server`
+
+6. **Run the Client**:  
+   Open another terminal and start the client:  
+   `./client/client`
+
+---
+
+### **For Windows**
+
+1. **Install FFmpeg**:  
+   - Download FFmpeg from the official website: [FFmpeg.org](https://ffmpeg.org/download.html).  
+   - Extract the files to a directory (e.g., `C:\\ffmpeg`).  
+   - Add the `bin` folder to your system PATH:
+     - Go to **Environment Variables**, find **System Variables**, select **Path**, click **Edit**, and add the path to the `bin` folder.
+
+2. **Install MinGW (if not using Visual Studio)**:  
+   - Download MinGW from [MinGW-W64](https://www.mingw-w64.org/).  
+   - Add MinGW's `bin` folder to your PATH in the same way as FFmpeg.
+
+3. **Navigate to the Project Folder**:  
+   Open Command Prompt and move to the directory containing the project files:  
+   `cd \\path\\to\\Project`
+
+4. **Compile the Code**:  
+   Use MinGW to compile the server and client:  
+   `g++ -std=c++17 -o server\\server server\\server.cpp`  
+   `g++ -std=c++17 -o client\\client client\\client.cpp`
+
+5. **Run the Server**:  
+   Open Command Prompt and start the server:  
+   `server\\server.exe`
+
+6. **Run the Client**:  
+   Open another Command Prompt and start the client:  
+   `client\\client.exe`
+
+---
+
+## **Usage**
+
+- **Broadcast Messages**:  
+  Type your message and press Enter to send it to all connected clients.
+
+- **Private Messages**:  
+  Use the command `/msg <recipient> <message>` to send private messages to a specific client.
+
+- **Audio Recording and Playback**:  
+  Use the command `/audio` to record and send an audio message.
+
+- **Video Recording and Playback**:  
+  Use the command `/video` to record and send a video message.
+
+---
+
+## **Troubleshooting**
+
+1. **FFmpeg Not Found**:  
+   - Ensure FFmpeg is installed and its `bin` directory is in your PATH.  
+   - Test by running:  
+     `ffmpeg -version`
+
+2. **Compiler Errors**:  
+   - Ensure you are using a C++17 compatible compiler.  
+   - On macOS, install Xcode Command Line Tools by running:  
+     `xcode-select --install`  
+   - On Windows, ensure MinGW or Visual Studio is properly installed.
+
+3. **Server or Client Not Connecting**:  
+   - Ensure both programs are running on the same machine or network.  
+   - On Windows, check firewall settings to allow the programs to communicate.
+
+4. **Audio/Video Issues**:  
+   - Ensure your microphone and camera are properly configured.  
+   - Test them with FFmpeg by listing devices:  
+     `ffmpeg -f avfoundation -list_devices true -i ""`
+
+---
+
+This project has been tested and verified on macOS and Windows. Please contact us if you encounter any issues or need assistance.
+"""
